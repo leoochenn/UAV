@@ -4,6 +4,9 @@ import time
 import os
 import subprocess
 import re
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 def takePic():
     tello = Tello()
@@ -35,6 +38,34 @@ def takePic():
     tello.land()
     tello.streamoff()
 
+
+def send_email(subject, body):
+    sender_email = "92leochenp@gmail.com"
+    rec_email = "41097A011@gms.ndhu.edu.tw"
+    password = "gobx bqgq smif luim "
+
+    #-------password-------#
+    #   this password is called "app password",
+    #   you need to get the password form your Google account.
+    #   this is for the safety of the account you'r using.
+    #----------------------#
+
+    message = MIMEMultipart()
+    message["From"] = sender_email
+    message["To"] = rec_email
+    message["Subject"] = subject
+    message.attach(MIMEText(body, "plain"))
+
+
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    print("connected to server")
+    server.login(sender_email, password)
+    print("login succeed")
+    server.sendmail(sender_email, rec_email, message.as_string())
+    print("email has been sent to ", rec_email)
+
+
 def count(result):
     output_lines = result.stderr.splitlines()
     total_sum = 0
@@ -47,10 +78,14 @@ def count(result):
     # 輸出加總結果
     print("總和:", total_sum)
 
+    subject = "以YOLOv5計算番茄產量！！！"
+    body = "你有" + str(total_sum) + "顆番茄"
+    #send_email(subject, body)
+
 
 
 def yolo():
-    script_path = os.path.expanduser("~/Desktop/final/yolov5/detect.py")
+    script_path = os.path.expanduser("detect.py")
     #os.system(f"python3 {script_path} --weights best.pt --source data/images")
     command = f"python3 {script_path} --weights best.pt --source data/images"
     result = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
