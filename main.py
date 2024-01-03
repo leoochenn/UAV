@@ -81,7 +81,7 @@ def count(result):
 
     subject = "以YOLOv5計算番茄產量！！！"
     body = "你有" + str(total_sum) + "顆番茄"
-    send_email(subject, body)
+    #send_email(subject, body)
 
 
 
