@@ -7,6 +7,6 @@ to run the program you will have to clone the repo into your local computer, and
 
 ```bash
 git clone https://github.com/leoochenn/UAV.git
-'''
+```
 
 end of the file
