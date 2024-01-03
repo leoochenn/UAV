@@ -8,5 +8,25 @@ to run the program you will have to clone the repo into your local computer, and
 ```bash
 git clone https://github.com/leoochenn/UAV.git
 ```
+clone the repo into your loacal computer (it might take a few minits......)
 
-end of the file
+```bash
+mv weight/best.pt yolov5
+```
+move the custom weight (best.pt) file into yolov5 project directory.
+
+```bash
+mv main.py yolov5
+```
+move the main.py file into yolov5 project dirtctory.
+
+```bash
+cd yolov5
+```
+change directory into yolov5.
+
+```bash
+python3 detect.py --weight best.pt --source data/images
+```
+press ENTER, then your result will be stored in runs/detect/exp_ .
+# note that you can change the photos inside the images directory to detect othere things.
