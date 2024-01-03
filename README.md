@@ -33,5 +33,6 @@ change directory into yolov5.
 ```bash
 python3 detect.py --weight best.pt --source data/images
 ```
-press ENTER, then your result will be stored in runs/detect/exp_ .
-*** note that you can change the photos inside the yolov5/data/images directory to detect othere things.
+press ENTER, then your result will be stored in runs/detect/exp_ . 
+
+note that you can change the photos inside the yolov5/data/images directory to detect othere things.
